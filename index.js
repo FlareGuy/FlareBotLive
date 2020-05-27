@@ -1042,7 +1042,7 @@ try {
 
   setTimeout(() => { 
             
-    guildMember.guild.channels.get("417247360054198283").send(`Üdv.`);
+    guildmember.guild.channels.get("417247360054198283").send(`Üdv.`);
 
 }, 1000);
 
