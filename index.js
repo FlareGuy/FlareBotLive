@@ -602,7 +602,7 @@ message.channel.send("nice")
     .addBlankField()
     .addField ("Elérhető parancsok", "\n `.help`  -  Kiírja az összes elérhető parancsot. \n `.bio`  -  Megadja a háttértörténetemet. \n `.talk (üzeneted)`  -  Beszélhetsz velem. Ismerj meg. \n `.randomteny`  -  Mondok egy teljesen random tényt a világról. \n `.predict`  -  Megjósolom a napodat. \n `.coin`  -  Fej vagy írás. Ha nincs kézben egy érme, a bot megoldja! \n `.server`  -  Kiírja a szerver információit. \n `.otlet (ötleted)`  -  Ötletet küldhetsz a szerverhez. \n `.report (tagelt személy) (indok/linkelt kép)`  -  Szabályzatot súlyosan sértett személy reportolása.")
     .addBlankField ()
-    .setFooter (`${bot.user.username} | v1.2.2`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
+    .setFooter (`${bot.user.username} | v1.2.3`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
     .setTimestamp();
      
     message.channel.send (botembed);
@@ -1044,7 +1044,7 @@ try {
             
     guildmember.guild.channels.get("417247360054198283").send(`Üdv.`);
 
-}, 1000);
+}, 4000);
 
 }
 catch (err) {
@@ -1061,7 +1061,12 @@ bot.on("guildMemberRemove", guildmember => {
 
   try {
 
-  bot.channels.get("417247360054198283").send("https://tenor.com/view/league-of-legends-lol-mia-lol-ping-league-of-legends-mia-missing-ping-gif-17055191");
+    setTimeout(() => {
+
+      bot.channels.get("417247360054198283").send("<a:what:716592063629754399>");
+      
+    }, 4000);
+ 
 
 
   }
