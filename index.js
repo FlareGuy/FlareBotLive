@@ -113,7 +113,7 @@ let mellekTulaj = ["látta", "ette", "fosta", "bűzlötte", "szülte", "nőtte",
 
 let fonevTulaj = ["rántott", "béles", "koszos", "mocskos", "büdös", "vadász", "afro", "nigger", "püré", "metszett", "kanos", "kedves", "gellért", "csípős", "terhes", "tengeri", "tetves", "éhes", "ordas", "kedves", "meleg", "hideg", "ribanc", "nyúzott", "érlelt", "nedves", "kedvelt" ];
 
-var fonev = ["kecske", "szikla", "veréb", "ember", "hörcsög", "admin", "macska", "kutya", "torony", "ház", "gép", "telefon", "hanglejátszó", "terv", "csapda", "bot", "prostituált", "fa", "Jonesy", "bakancs", "ruha", "szitakötő", "Foltos", "pirítós", "ribanc", "nő", "férfi", "pohár", "vírus", `${message.member.user.username}`, "béke", "Ghost", "paradicsom", "csaj", "csiperke", "franciapirítós", "gáz", "-oxid", "bérlő"];
+var fonev = ["kecske", "szikla", "veréb", "ember", "hörcsög", "admin", "macska", "kutya", "torony", "ház", "gép", "telefon", "hanglejátszó", "terv", "csapda", "bot", "prostituált", "fa", "Jonesy", "bakancs", "ruha", "szitakötő", "Foltos", "pirítós", "ribanc", "nő", "férfi", "pohár", "vírus", "béke", "Ghost", "paradicsom", "csaj", "csiperke", "franciapirítós", "gáz", "-oxid", "bérlő"];
 
 let mNRandom = Math.floor((Math.random() * mellekNev.length ));
 let mTRandom = Math.floor((Math.random() * mellekTulaj.length ));
