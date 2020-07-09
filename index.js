@@ -1320,7 +1320,7 @@ if (message.content.startsWith(".guess")) {
  
  catch (err) {
 
-   catchErr(err);
+   console.error(err);
 
  }
 
