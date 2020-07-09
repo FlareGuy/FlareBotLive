@@ -106,14 +106,14 @@ bot.on ("message" ,  message => {
 // random szó
 //
 
-let mellekNev = ["madár", "fos", "erdő", "humusz", "Föld", "eper", "macska", "dió", "csupasz", "tészta", "keksz", "tojás", "fiók", "hacker", "admin", "robot", "egér", "cserép", "csöves", "gnome", "tejbe", "cukor", "diktátor", "fű", "gaz", "kecseg", "létra", "bú", "nyaka", "posta", "vihar", "busz",  `${message.guild.members.random().user.username}`, "ravasz", "szex", "hold", "Nap", "légy", "császár", "befőtt", "öröm", "lekvár", "kókusz", "szájba", "kulcs", "udvar"];
+let mellekNev = ["madár", "fos", "erdő", "humusz", "Föld", "eper", "macska", "dió", "csupasz", "tészta", "keksz", "tojás", "fiók", "hacker", "admin", "robot", "egér", "cserép", "csöves", "gnome", "tejbe", "cukor", "diktátor", "fű", "gaz", "kecseg", "létra", "bú", "nyaka", "posta", "vihar", "busz",  "ravasz", "szex", "hold", "Nap", "légy", "császár", "befőtt", "öröm", "lekvár", "kókusz", "szájba", "kulcs", "udvar"];
 
 
 let mellekTulaj = ["látta", "ette", "fosta", "bűzlötte", "szülte", "nőtte", "taposta", "nőtte", "lakta", "szőtte", "szülte", "kérte", "hámzott", "tört", "csiszolt", "kérgelt", "hergelt", "nyújtott", "főtt", "sütötte", "ropogta", "rántotta", "védett", "kímélt", "sírta", "lőtte", "hozta", "nyalta", "törte", "festett", "szívta", "itta", "mondta", "szabályzott", "érlelte", "mászott", "bélelt", "vágott", "tekert", "csapta", "ütötte", "jósolt"];
 
 let fonevTulaj = ["rántott", "béles", "koszos", "mocskos", "büdös", "vadász", "afro", "nigger", "püré", "metszett", "kanos", "kedves", "gellért", "csípős", "terhes", "tengeri", "tetves", "éhes", "ordas", "kedves", "meleg", "hideg", "ribanc", "nyúzott", "érlelt", "nedves", "kedvelt" ];
 
-var fonev = ["kecske", "szikla", "veréb", "ember", "hörcsög", "admin", "macska", "kutya", "torony", "ház", "gép", "telefon", "hanglejátszó", "terv", "csapda", "bot", "prostituált", "fa", "Jonesy", "bakancs", "ruha", "szitakötő", "Foltos", "pirítós", "ribanc", "nő", "férfi", "pohár", "vírus", `${message.guild.members.random().user.username}`, "béke", "Ghost", "paradicsom", "csaj", "csiperke", "franciapirítós", "gáz", "-oxid", "bérlő"];
+var fonev = ["kecske", "szikla", "veréb", "ember", "hörcsög", "admin", "macska", "kutya", "torony", "ház", "gép", "telefon", "hanglejátszó", "terv", "csapda", "bot", "prostituált", "fa", "Jonesy", "bakancs", "ruha", "szitakötő", "Foltos", "pirítós", "ribanc", "nő", "férfi", "pohár", "vírus", `${message.guild.members.random().user.username || message.member.user.username}`, "béke", "Ghost", "paradicsom", "csaj", "csiperke", "franciapirítós", "gáz", "-oxid", "bérlő"];
 
 let mNRandom = Math.floor((Math.random() * mellekNev.length ));
 let mTRandom = Math.floor((Math.random() * mellekTulaj.length ));
