@@ -113,7 +113,7 @@ let mellekTulaj = ["látta", "ette", "fosta", "bűzlötte", "szülte", "nőtte",
 
 let fonevTulaj = ["rántott", "béles", "koszos", "mocskos", "büdös", "vadász", "afro", "nigger", "püré", "metszett", "kanos", "kedves", "gellért", "csípős", "terhes", "tengeri", "tetves", "éhes", "ordas", "kedves", "meleg", "hideg", "ribanc", "nyúzott", "érlelt", "nedves", "kedvelt" ];
 
-var fonev = ["kecske", "szikla", "veréb", "ember", "hörcsög", "admin", "macska", "kutya", "torony", "ház", "gép", "telefon", "hanglejátszó", "terv", "csapda", "bot", "prostituált", "fa", "Jonesy", "bakancs", "ruha", "szitakötő", "Foltos", "pirítós", "ribanc", "nő", "férfi", "pohár", "vírus", `${message.guild.members.random().user.username || message.member.user.username}`, "béke", "Ghost", "paradicsom", "csaj", "csiperke", "franciapirítós", "gáz", "-oxid", "bérlő"];
+var fonev = ["kecske", "szikla", "veréb", "ember", "hörcsög", "admin", "macska", "kutya", "torony", "ház", "gép", "telefon", "hanglejátszó", "terv", "csapda", "bot", "prostituált", "fa", "Jonesy", "bakancs", "ruha", "szitakötő", "Foltos", "pirítós", "ribanc", "nő", "férfi", "pohár", "vírus", `${message.member.user.username}`, "béke", "Ghost", "paradicsom", "csaj", "csiperke", "franciapirítós", "gáz", "-oxid", "bérlő"];
 
 let mNRandom = Math.floor((Math.random() * mellekNev.length ));
 let mTRandom = Math.floor((Math.random() * mellekTulaj.length ));
@@ -830,6 +830,9 @@ message.channel.send("nice")
 
         } else {
 
+          fonev.push(`${message.guild.members.random().user.username}`);
+          mellekNev.push(`${message.guild.members.random().user.username}`);
+
      let kakao = ["szennyes", "nő", "férfi", "fegyver", "tanár", "köcsög", "furgon", "könyv", "polgármester", "Tomato", "barnabőrű", "lekvár", "admin", "tank", "macska", "számítógép", "barát", "ellenség", "szekrény", "titok", "telefon", "pénz", "Fortnite player", "földrengés", "napkitörés", "napsütés", "robot", "szülő", "dolgozat", "meme", "kenőmájas", "madár", "fos", "erdő", "eper", "macska", "dió", "csupasz", "tészta", "keksz", "tojás", "zsilip", "fiók", "hacker", "egér", "gnome", "diktátor", "fű", "gaz", "létra", "vihar", "busz", "meleg", "gép", "telefon", "hanglejátszó", "terv", "csapda", "prostituált", "Jonesy", "ruha", "szitakötő", "pohár", "kenőmájas", "ékszer", "csodálatos nő", "Yasuo main", "admin", "bugyi", "kocsma", "befőtt", `${szo}`, `${szo}`, `${szo}`, "barom"];
      
      let csacsao = Math.floor((Math.random() * kakao.length ));
@@ -1293,6 +1296,9 @@ if (message.content.startsWith(".guess")) {
 
 
      if (message.content.startsWith(randomTeny)) { 
+
+      fonev.push(`${message.guild.members.random().user.username}`);
+      mellekNev.push(`${message.guild.members.random().user.username}`);
      
       let alany = ["A világ", "Az emelet", "A macska", "A kutya", "Az admin", "FlareGuy", "A küldetés", `${message.author.username}`, `A ${message.guild.name}`, "A llámák", "Az űrhajóm", "Az I. világháború", "A gyógyszer", "A kommunizmus", "Közép-Amerika", "A kenyér", "Az asztronauta", "A börtön", "A szex", "A pénz", "GabeN", "Kivégzés", "A repterem", "Az újság", "A biciklizés", "Úszás", "Ittas vezetés űrhajón", "Ittas vezetés", "Jézus", "A katonanők", "A Mars", "Ázsia", "Az internet", "A temető", "A politika", `${message.author.username}`, `${message.author.username}`, "A Fekete lyuk", "Keanu Reeves", "Európa", "A II. világháború", "Iskolai bunyó", "A horror", "Minden robot", "A Fortnite", "Az illegális dolgok", "A nyár", "A szerelem", "A Marstól való távolság", "A negatív tömegű tárgyak", "A Discord", "A Mythic Goldfish", "A vbucks", "Minden amit látsz", "Miskolc", "A hajad", "Az IQ szinted", "Minden nő", "Az okostelefonod", "Alexa", `${message.guild.owner.displayName}`, "Magyarország", `${message.guild.memberCount} szervertag`, "A mesterséges intelligencia", "A tested", "A nadrágod", "A gondolkodásod", "A papír", "A fekvőrendőr", "Minden férfi", "Minden nő", "Minden műhold", "Az emberiség", "A furry", "Az óvszer", "A tenger", "A pláza", "A suli", "Minden arany", "Minden OG személy", "Az 51-es körzet", "A félelem", "A demokrácia", "A gerincferdülés", "A bolygótok", `A ${szo}`, "A League of Legends" ];
  
