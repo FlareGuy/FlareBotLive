@@ -168,7 +168,7 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
                .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
                .setTimestamp();
    
-               message.channel.send(`${spamEmbed}`);
+               message.channel.send(spamEmbed);
    
                message.member.ban(1);
    
