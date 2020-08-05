@@ -214,7 +214,7 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
                      masodikw.add(message.author.id);
                        
             
-                       message.channel.send(`${message.member}**, amennyiben folytatod a spammelést, büntetést szabunk ki rád!**`);
+                      // message.channel.send(`${message.member}**, amennyiben folytatod a spammelést, büntetést szabunk ki rád!**`);
    
    
                            
