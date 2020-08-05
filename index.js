@@ -198,7 +198,7 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
            harmadikw.add(message.author.id);
            
    
-           message.channel.send(`${message.member}**, a figyelmeztetés ellenére folytattad a spammelést, ezért 5 perc mute-ot kapsz!**`);
+           message.channel.send(`${message.member}**, folytattad a spammelést, ezért 5 perc mute-ot kapsz!**`);
    
            message.member.addRole(role, "Spammelés");
    
