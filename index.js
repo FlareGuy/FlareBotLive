@@ -44,9 +44,9 @@ bot.on('ready', () => {
 
   try {
 
-  console.log(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.map(guilds => `${guilds}`).join(", ")} `);
+  console.log(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.cache.map(guilds => `${guilds}`).join(", ")} `);
   
-  bot.users.cache.get("342630541079609355").send(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.map(guilds => `${guilds}`).join(", ")} `);
+  bot.users.cache.get("342630541079609355").send(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.cache.map(guilds => `${guilds}`).join(", ")} `);
 
   setInterval (function() {
    
