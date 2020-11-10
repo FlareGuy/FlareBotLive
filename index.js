@@ -39,6 +39,7 @@ bot.users.cache.get("342630541079609355").send("Hiba: ```" + err + "```");
 
 }
 
+//Ready event
 
 bot.on('ready', () => {
 
