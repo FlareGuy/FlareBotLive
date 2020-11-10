@@ -62,7 +62,8 @@ bot.on('ready', () => {
 
   catch (err) {
 
-   catchErr (err);
+     console.error(err);
+
 
   }
 
