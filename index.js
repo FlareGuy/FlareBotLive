@@ -828,8 +828,8 @@ message.channel.send("nice")
 
         } else {
 
-          fonev.push(`${message.guild.members.random().user.username}`);
-          mellekNev.push(`${message.guild.members.random().user.username}`);
+          fonev.push(`${message.guild.members.cache.random().user.username}`);
+          mellekNev.push(`${message.guild.members.cache.random().user.username}`);
 
      let kakao = ["szennyes", "nő", "férfi", "fegyver", "tanár", "köcsög", "furgon", "könyv", "polgármester", "Tomato", "barnabőrű", "lekvár", "admin", "tank", "macska", "számítógép", "barát", "ellenség", "szekrény", "titok", "telefon", "pénz", "Fortnite player", "földrengés", "napkitörés", "napsütés", "robot", "szülő", "dolgozat", "meme", "kenőmájas", "madár", "fos", "erdő", "eper", "macska", "dió", "csupasz", "tészta", "keksz", "tojás", "zsilip", "fiók", "hacker", "egér", "gnome", "diktátor", "fű", "gaz", "létra", "vihar", "busz", "meleg", "gép", "telefon", "hanglejátszó", "terv", "csapda", "prostituált", "Jonesy", "ruha", "szitakötő", "pohár", "kenőmájas", "ékszer", "csodálatos nő", "Yasuo main", "admin", "bugyi", "kocsma", "befőtt", `${szo}`, `${szo}`, `${szo}`, "barom"];
      
