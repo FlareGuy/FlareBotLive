@@ -39,7 +39,6 @@ bot.users.cache.get("342630541079609355").send("Hiba: ```" + err + "```");
 
 }
 
-//Ready event
 
 bot.on('ready', () => {
 
@@ -63,8 +62,7 @@ bot.on('ready', () => {
 
   catch (err) {
 
-     console.error(err);
-
+   console.error(err);
 
   }
 
@@ -802,7 +800,7 @@ message.channel.send("nice")
   
    let roleembed = new Discord.MessageEmbed()
    
-   .setAuthor (`${message.guild.name}`, `${message.guild.iconURL}`)
+   .setAuthor (`${message.guild.name}`, `${message.guild.iconURL()}`)
    .setColor ("#7bff00")
    .addField ("Tagok", `${message.guild.memberCount}`, true)
    .addField("Rangok", `${message.guild.roles.size}`, true)
