@@ -31,11 +31,11 @@ function change () {
 
 
 
-let statuses = ["FlareGuy's AI", "Use code FLAREGUY", ".help"];
+let statuses = ["Made by FlareGuy", "v1.3", ".help"];
 
 function catchErr (err) {
 
-bot.users.get("342630541079609355").send("Hiba: ```" + err + "```");
+bot.users.cache.get("342630541079609355").send("Hiba: ```" + err + "```");
 
 }
 
@@ -46,7 +46,7 @@ bot.on('ready', () => {
 
   console.log(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.map(guilds => `${guilds}`).join(", ")} `);
   
-  bot.users.get("342630541079609355").send(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.map(guilds => `${guilds}`).join(", ")} `);
+  bot.users.cache.get("342630541079609355").send(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.map(guilds => `${guilds}`).join(", ")} `);
 
   setInterval (function() {
    
@@ -91,7 +91,6 @@ bot.on ("message" ,  message => {
 
   try { 
 
-    bot.fetchUser("342630541079609355");
 
     var args = message.content.substring().split(" ");
     var uzenet = message.content.substring().split(" ");
@@ -144,7 +143,7 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
 
   if (message.guild) {
 
-    var role = message.guild.roles.find(role => role.name === "Chest" );
+    var role = message.guild.roles.cache.find(role => role.name === "Chest" );
 
     if (!message.content.startsWith(".")) {
    
@@ -158,12 +157,12 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
            if (message.member.bannable) {
                
    
-               let spamEmbed = new Discord.RichEmbed()
+               let spamEmbed = new Discord.MessageEmbed()
                .setTitle ("Automatikus ban került végrehajtásra!")
                .setColor("RANDOM")
-               .addBlankField()
+               .addField('\u200b', '\u200b')
                .addField ("Üzenet küldője", `${message.member.displayName}`)
-               .addBlankField()
+               .addField('\u200b', '\u200b')
                .addField ("Oka", `Többszöri figyelmeztetés utáni spammelés.`)
                .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
                .setTimestamp();
@@ -184,10 +183,10 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
    
            message.channel.send(`${message.member}**, a figyelmeztetés ellenére *ismét* folytattad a spammelést, ezért 5 perc további mute-ot kapsz!**`);
    
-           message.member.addRole(role, "Ismét spammelés");
+           message.member.roles.add(role, "Ismét spammelés");
    
                    setTimeout(() => {
-                       message.member.removeRole(role, "A büntetés ideje lejárt.");
+                       message.member.roles.remove(role, "A büntetés ideje lejárt.");
                    }, 300000);
    
    
@@ -198,12 +197,12 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
            harmadikw.add(message.author.id);
            
    
-           message.channel.send(`${message.member}**, folytattad a spammelést, ezért 5 perc mute-ot kapsz!**`);
+           message.channel.send(`${message.member}**, a figyelmeztetés ellenére folytattad a spammelést, ezért 5 perc mute-ot kapsz!**`);
    
-           message.member.addRole(role, "Spammelés");
+           message.member.roles.add(role, "Spammelés");
    
                 setTimeout(() => {
-                    message.member.removeRole(role, "A büntetés ideje lejárt.");
+                    message.member.roles.remove(role, "A büntetés ideje lejárt.");
                 }, 300000);
    
    
@@ -214,7 +213,7 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
                      masodikw.add(message.author.id);
                        
             
-                      // message.channel.send(`${message.member}**, amennyiben folytatod a spammelést, büntetést szabunk ki rád!**`);
+                       message.channel.send(`${message.member}**, amennyiben folytatod a spammelést, büntetést szabunk ki rád!**`);
    
    
                            
@@ -298,13 +297,13 @@ if (message.author.id === "342630541079609355") {
                uzenet.shift();
 
       
-                     bot.channels.get(args[1]).send(`<a:infinitygift:525965061789974528> ${uzenet.join(" ")}`);
+                     bot.channels.cache.get(args[1]).send(`<a:infinitygift:525965061789974528> ${uzenet.join(" ")}`);
 
                  return;   
 
                      } else {
   
-                        bot.channels.get(args[1]).send(`${uzenet.join(" ")}`);
+                        bot.channels.cache.get(args[1]).send(`${uzenet.join(" ")}`);
  
 
                       return;
@@ -321,7 +320,7 @@ if (message.author.id === "342630541079609355") {
         
                uzenet.shift();
       
-                     bot.users.get(args[1]).send(`<a:infinitygift:525965061789974528> ${uzenet.join(" ")}`);
+                     bot.users.cache.get(args[1]).send(`<a:infinitygift:525965061789974528> ${uzenet.join(" ")}`);
 
                   message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.get(args[1]).username}** számára.`);
 
@@ -329,7 +328,7 @@ if (message.author.id === "342630541079609355") {
 
                         } else {
 
-                           bot.users.get(args[1]).send(`${uzenet.join(" ")}`);
+                           bot.users.cache.get(args[1]).send(`${uzenet.join(" ")}`);
                 
                               message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.get(args[1]).username}** számára.`);
    
@@ -352,7 +351,7 @@ if (message.channel.type == "dm" ) {
    message.author.send("Kérlek a szerveren használj engem vagy erőszakot alkalmazok!");
  } else {
  
- bot.channels.get("436213035510792192").send(message.content);
+ bot.channels.cache.get("436213035510792192").send(message.content);
 
  dmRecently.add(message.author.id);
 
@@ -371,18 +370,18 @@ setTimeout(() => {
 
   }
 
-  let dmembed = new Discord.RichEmbed()
+  let dmembed = new Discord.MessageEmbed()
   .setTitle ("Privát üzenetet kaptam!")
   .setColor("#fcf003")
-  .addBlankField()
+  .addField('\u200b', '\u200b')
   .addField("Üzenet küldője", `${message.author}`)
-  .addBlankField()
+  .addField('\u200b', '\u200b')
   .addField("Üzenet tartalma", `${message.content}`)
-  .addBlankField()
+  .addField('\u200b', '\u200b')
   .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
   .setTimestamp();
 
-  bot.users.get("342630541079609355").send(dmembed);
+  bot.users.cache.get("342630541079609355").send(dmembed);
 
   return;
 }
@@ -391,7 +390,7 @@ if (message.content.toLowerCase().includes("www.pornhub.com")) {
 
   if (!message.member.hasPermission("KICK_MEMBERS")) {
 
-    bot.users.get(message.author.id).send("**Automatikusan bannolva lettél a szerverről pornográf tartalom megosztása miatt.**");
+    bot.users.cache.get(message.author.id).send("**Automatikusan bannolva lettél a szerverről pornográf tartalom megosztása miatt.**");
 
     setTimeout(() => {
       
@@ -399,13 +398,13 @@ if (message.content.toLowerCase().includes("www.pornhub.com")) {
     message.member.ban({days: 1, reason: "Pornográf tartalom megosztása"})
     .then(() => {
       
-     let banEmbed = new Discord.RichEmbed ()
+     let banEmbed = new Discord.MessageEmbed()
      .setTitle ("Automatikus BAN történt, mert én úgy döntöttem")
      .setColor("RANDOM")
-     .addBlankField()
+     .addField('\u200b', '\u200b')
      .addField("Bannolt személy", `${message.member.displayName}`)
      .addField("Oka:", "Pornográf tartalom megosztása.")
-     .addBlankField()
+     .addField('\u200b', '\u200b')
      .setFooter(bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
      .setTimestamp();
 
@@ -423,7 +422,7 @@ if (message.content.toLowerCase().includes("discord.gg/")) {
 
   if (!message.member.hasPermission("KICK_MEMBERS")) {
 
-    bot.users.get(message.author.id).send("**Automatikusan kickelve lettél a szerverről Discord szerver hirdetése miatt.**");
+    bot.users.cache.get(message.author.id).send("**Automatikusan kickelve lettél a szerverről Discord szerver hirdetése miatt.**");
     
     
     setTimeout(() => {
@@ -431,7 +430,7 @@ if (message.content.toLowerCase().includes("discord.gg/")) {
     message.member.kick("Discord szerver hirdetése")
     .then(() => {
     
-    let kickEmbed = new Discord.RichEmbed ()
+    let kickEmbed = new Discord.MessageEmbed()
     .setTitle ("Automatikus KICK történt, mert én úgy döntöttem")
      .setColor("RANDOM")
      .addBlankField()
@@ -461,43 +460,43 @@ return;
 
         if (message.content.length >= 1024) {
 
-          let bigEmbed = new Discord.RichEmbed ()
+          let bigEmbed = new Discord.MessageEmbed()
 
            .setTitle (`Az "mfk" szó megemlítésre került!`)
            .setColor ("#7bff00")
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
-           .addBlankField ()
+           .addField('\u200b', '\u200b')
            .addField ("Üzenet küldője", `${message.author}`)
-           .addBlankField ()
+           .addField('\u200b', '\u200b')
            .addField ("Channel neve", `${message.author.lastMessage.channel.name}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Üzenet tartalma", `Túl hosszú volt az üzenet!`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
            .setTimestamp();
           
-           bot.users.get("342630541079609355").send(bigEmbed);
+           bot.users.cache.get("342630541079609355").send(bigEmbed);
           return;
          
            }
-           let mfkembed = new Discord.RichEmbed ()
+           let mfkembed = new Discord.MessageEmbed()
 
            .setTitle (`Az "mfk" szó megemlítésre került!`)
            .setColor ("#7bff00")
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
-           .addBlankField ()
+           .addField('\u200b', '\u200b')
            .addField ("Üzenet küldője", `${message.author}`)
-           .addBlankField ()
+           .addField('\u200b', '\u200b')
            .addField ("Channel neve", `${message.author.lastMessage.channel.name}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Üzenet tartalma", `${message.content}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
            .setTimestamp();
 
-           bot.users.get("342630541079609355").send(mfkembed);
+           bot.users.cache.get("342630541079609355").send(mfkembed);
           
              
           return;
@@ -507,43 +506,42 @@ return;
 
     if (message.content.length >= 1024) {
 
-      let pigEmbed = new Discord.RichEmbed ()
+      let pigEmbed = new Discord.MessageEmbed()
 
  .setTitle (`Mesterem, megemlítettek téged!`)
  .setColor ("#08fbff")
  .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
- .addBlankField ()
+ .addField('\u200b', '\u200b')
  .addField ("Üzenet küldője", `${message.author}`)
- .addBlankField ()
+ .addField('\u200b', '\u200b')
  .addField ("Channel neve", `${message.author.lastMessage.channel.name}`)
- .addBlankField()
+ .addField('\u200b', '\u200b')
  .addField ("Üzenet tartalma", `Túl hosszú volt az üzenet!`)
- .addBlankField()
+ .addField('\u200b', '\u200b')
  .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
  .setTimestamp();
 
-bot.users.get("342630541079609355").send(pigEmbed);
+bot.users.cache.get("342630541079609355").send(pigEmbed);
      
       return;
      
        }
 
-    let pingembed = new Discord.RichEmbed ()
-
+    let pingembed = new Discord.MessageEmbed()
  .setTitle (`Mesterem, megemlítettek téged!`)
  .setColor ("#08fbff")
  .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
- .addBlankField ()
+ .addField('\u200b', '\u200b')
  .addField ("Üzenet küldője", `${message.author}`)
- .addBlankField ()
+ .addField('\u200b', '\u200b')
  .addField ("Channel neve", `${message.author.lastMessage.channel.name}`)
- .addBlankField()
+ .addField('\u200b', '\u200b')
  .addField ("Üzenet tartalma", `${message.content}`)
- .addBlankField()
+ .addField('\u200b', '\u200b')
  .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
  .setTimestamp();
 
-bot.users.get("342630541079609355").send(pingembed);
+bot.users.cache.get("342630541079609355").send(pingembed);
 
 
   }
@@ -560,14 +558,14 @@ bot.users.get("342630541079609355").send(pingembed);
 
   if (message.content.toLowerCase().includes(trade[k])) {
  
-    message.member.addRole(role);
+    message.member.roles.add(role);
     message.delete(message.member);
 
     message.reply("**Szerverünkön szigorúan tilos a trade! 5 perc automatikus mute-ot kapsz, hogy átolvasd a szabályzatot!**");
 
     setTimeout (() => {
 
-      message.member.removeRole(role);
+      message.member.roles.remove(role);
 
     }, 300000);
 
@@ -578,13 +576,13 @@ bot.users.get("342630541079609355").send(pingembed);
 
     if (!message.member.hasPermission("MENTION_EVERYONE")) {
 
- message.member.addRole(role);
+ message.member.roles.add(role);
 
  message.reply("**Szerverünkön szigorúan tilos az *everyone* tagelése ha nem vagy Moderátor! 5 perc automatikus mute-ot kapsz, hogy átolvasd a szabályzatot!**");
 
  setTimeout(() => {
    
-    message.member.removeRole(role);
+    message.member.roles.remove(role);
 
  }, 300000);
 
@@ -597,13 +595,13 @@ bot.users.get("342630541079609355").send(pingembed);
 
     if (!message.member.hasPermission("MENTION_EVERYONE")) {
 
- message.member.addRole(role);
+ message.member.roles.add(role);
 
  message.reply("**Szerverünkön szigorúan tilos a *here* tagelése ha nem vagy Moderátor! 5 perc automatikus mute-ot kapsz, hogy átolvasd a szabályzatot!**");
 
  setTimeout(() => {
    
-    message.member.removeRole(role);
+    message.member.roles.remove(role);
 
  }, 300000);
 
@@ -696,56 +694,56 @@ message.channel.send("nice")
 
         if (message.content.length >= 1024) {
 
-          let tagEmbed = new Discord.RichEmbed()
+          let tagEmbed = new Discord.MessageEmbed()
            .setTitle ("Megemlítettek engem!")
            .setColor ("#6f00ff")
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
-           .addBlankField ()
+           .addField('\u200b', '\u200b')
            .addField ("Megemlítve általa", `${message.author}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Channel neve", `${message.author.lastMessage.channel.name}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Üzenet tartalma", `Túl hosszú volt az üzenet!`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
            .setTimestamp();
          
-             bot.users.get("342630541079609355").send (tagEmbed);
+             bot.users.cache.get("342630541079609355").send (tagEmbed);
 
-             bot.users.get(message.author.id).send(`${message.author} scannelése... \n \n https://drive.google.com/file/d/1xe0RVk-OcNAaKbS9EY57HNZVeXlqgtxp/view?usp=sharing`);
+             bot.users.cache.get(message.author.id).send(`${message.author} scannelése... \n \n https://drive.google.com/file/d/1xe0RVk-OcNAaKbS9EY57HNZVeXlqgtxp/view?usp=sharing`);
            
            setTimeout (function() {
            
-           bot.users.get(message.author.id).send("Scannelés sikeres.");
+           bot.users.cache.get(message.author.id).send("Scannelés sikeres.");
           } , 5000);
          
           return;
          
            }
             
-           let flareembed = new Discord.RichEmbed()
+           let flareembed = new Discord.MessageEmbed()
            .setTitle ("Megemlítettek engem!")
            .setColor ("#6f00ff")
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
-           .addBlankField ()
+           .addField('\u200b', '\u200b')
            .addField ("Megemlítve általa", `${message.author}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Channel neve", `${message.author.lastMessage.channel.name}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .addField ("Üzenet tartalma", `${message.content}`)
-           .addBlankField()
+           .addField('\u200b', '\u200b')
            .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
            .setTimestamp();
          
-             bot.users.get("342630541079609355").send (flareembed);
+             bot.users.cache.get("342630541079609355").send (flareembed);
              
-             bot.users.get(message.author.id).send(`${message.author} scannelése... \n \n https://drive.google.com/file/d/1xe0RVk-OcNAaKbS9EY57HNZVeXlqgtxp/view?usp=sharing`);
+             bot.users.cache.get(message.author.id).send(`${message.author} scannelése... \n \n https://drive.google.com/file/d/1xe0RVk-OcNAaKbS9EY57HNZVeXlqgtxp/view?usp=sharing`);
            
            setTimeout (function() {
            
-           bot.users.get(message.author.id).send("Scannelés sikeres.");
+           bot.users.cache.get(message.author.id).send("Scannelés sikeres.");
            
           } , 5000);
 
@@ -779,15 +777,15 @@ message.channel.send("nice")
 
    if (message.content.startsWith (help)) {
    
-    let botembed = new Discord.RichEmbed()
+    let botembed = new Discord.MessageEmbed()
     
     .setTitle ("**Itt található a jelenlegi összes parancs listája!**")
     .setColor ("#7bff00")
     .setThumbnail ("https://cdn.discordapp.com/attachments/432471332920360960/652861814664855562/botlogo_ee.png")
-    .addBlankField()
+    .addField('\u200b', '\u200b')
     .addField ("Általános parancsok", "\n `.help`  -  Kiírja az összes elérhető parancsot. \n `.bio`  -  Megadja a háttértörténetemet. \n `.talk (üzeneted)`  -  Beszélhetsz velem. Ismerj meg. \n `.randomteny`  -  Mondok egy teljesen random tényt a világról. \n `.predict`  -  Megjósolom a napodat. \n `.rng (min) (max)`  -  Generál egy random számot az általad megadott min és max érték között. \n `.gayrate`  -  Megmutatja más vagy a te melegségi szintedet.  \n `.coin`  -  Fej vagy írás. Ha nincs kézben egy érme, a bot megoldja! \n `.server`  -  Kiírja a szerver információit. \n `.otlet (ötleted)`  -  Ötletet küldhetsz a szerverhez. \n `.report (tagelt személy) (indok/linkelt kép)`  -  Szabályzatot súlyosan sértett személy reportolása.")
     .addField("Minigamek", "\n `.guess (szám)`  -  A paranccsal kitalálhatod, hogy a bot melyik számra gondolt 1 és 1000 között.")
-    .addBlankField ()
+    .addField('\u200b', '\u200b')
     .setFooter (`${bot.user.username} | v1.3`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
     .setTimestamp();
      
@@ -800,7 +798,7 @@ message.channel.send("nice")
      if (message.content.startsWith(world)) {
        
   
-   let roleembed = new Discord.RichEmbed ()
+   let roleembed = new Discord.MessageEmbed()
    
    .setAuthor (`${message.guild.name}`, `${message.guild.iconURL}`)
    .setColor ("#7bff00")
@@ -810,7 +808,7 @@ message.channel.send("nice")
    .addField ("Emojik", `${message.guild.emojis.size}`, true)
    .addField ("Tulajdonos", `${message.guild.owner}`, true)
    .addField ("Szerver régió", `${message.guild.region}`, true)
-   .addBlankField()
+   .addField('\u200b', '\u200b')
    .addField("Szerver létrehozva", `${message.guild.createdAt}`)
    .setFooter (`${bot.user.tag}`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
    .setTimestamp();
@@ -967,7 +965,7 @@ if (message.content.startsWith(".rng")) {
 
    let nothing = Math.floor((Math.random() * 100) + 1);
 
-   let semmiEmbed = new Discord.RichEmbed()
+   let semmiEmbed = new Discord.MessageEmbed()
   .setTitle("RNG")
   .setColor("#36ff79")
   .setDescription(`🎲 szám legenerálva: **${nothing}**`);
@@ -982,7 +980,7 @@ if (message.content.startsWith(".rng")) {
 
           let real = Math.floor(Math.random() * (max - min + 1)) + min;
 
-          let realEmbed = new Discord.RichEmbed()
+          let realEmbed = new Discord.MessageEmbed()
           .setTitle("RNG")
           .setColor("#36ff79")
           .setDescription(`🎲 szám legenerálva: **${real}**`);
@@ -1007,7 +1005,7 @@ if (message.content.startsWith(".gayrate")) {
       let gi = Math.floor((Math.random() * 100) + 1);
       let pfu = message.mentions.members.first() || message.member;
 
-          let pfuEmbed = new Discord.RichEmbed()
+          let pfuEmbed = new Discord.MessageEmbed()
           .setTitle("🏳️‍🌈 Meleg Mérleg")
           .setColor("RANDOM")
           .setDescription(`**${pfu.user.username}** melegségi szintje: **${gi}%**`);
@@ -1050,7 +1048,7 @@ if (message.content.startsWith(".guess")) {
  
                       } else {
  
-                         let guessEmbed = new Discord.RichEmbed()
+                         let guessEmbed = new Discord.MessageEmbed()
                          .setTitle("🥳 Szám kitalálva!")
                          .setColor("RANDOM")
                          .setDescription(`**${message.member.user.username}** sikeresen rájött, melyik számra gondoltam: **${num}**`);
@@ -1116,19 +1114,19 @@ if (message.content.startsWith(".guess")) {
           return;
         }
 
-        let repembed = new Discord.RichEmbed()
+        let repembed = new Discord.MessageEmbed()
  
           .setTitle ("**Bejövő report**")
           .setColor ("#7bff00")
-          .addBlankField ()
+          .addField('\u200b', '\u200b')
           .addField ("Report feladója", `${message.author}`)
-          .addBlankField ()
+          .addField('\u200b', '\u200b')
           .addField ("Üzenete", `:arrow_right:  ${message.content} :arrow_left:`)
-          .addBlankField()
+          .addField('\u200b', '\u200b')
           .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
           .setTimestamp ();
 
-        bot.channels.get("652507749753683969").send(repembed);
+        bot.channels.cache.get("652507749753683969").send(repembed);
 
         message.channel.send ("**A feljelentésedet tovább küldtem a staffoknak! Köszönöm, hogy jelezted felém az esetleges szabálysértést.**");
 
@@ -1162,19 +1160,19 @@ if (message.content.startsWith(".guess")) {
            return;
           }
    
-          let repembed = new Discord.RichEmbed()
+          let repembed = new Discord.MessageEmbed()
  
           .setTitle ("**Bejövő report**")
           .setColor ("#7bff00")
-          .addBlankField ()
+          .addField('\u200b', '\u200b')
           .addField ("Report feladója", `${message.author}`)
-          .addBlankField ()
+          .addField('\u200b', '\u200b')
           .addField ("Üzenete", `:arrow_right:  ${message.content} :arrow_left:`)
-          .addBlankField()
+          .addField('\u200b', '\u200b')
           .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
           .setTimestamp ();
 
-           bot.channels.get("662013291953913856").send(repembed);
+           bot.channels.cache.get("662013291953913856").send(repembed);
    
            message.channel.send ("**A feljelentésedet tovább küldtem a staffoknak! Köszönöm, hogy jelezted felém az esetleges szabálysértést.**");
    
@@ -1229,19 +1227,19 @@ if (message.content.startsWith(".guess")) {
            
              }
 
-             let rangEmbed = new Discord.RichEmbed ()
+             let rangEmbed = new Discord.MessageEmbed()
              .setTitle ("**Új ötlet érkezett!**")
-             .addBlankField()
+             .addField('\u200b', '\u200b')
              .setColor("RANDOM")
              .addField ("Ötletadó:", `${message.author}`)
-             .addBlankField() 
+             .addField('\u200b', '\u200b')
              .addField("Ötlete:", `${message.content}`)
-             .addBlankField()
+             .addField('\u200b', '\u200b')
              .setFooter (`${bot.user.tag}`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
              .setTimestamp();
            
      
-     bot.channels.get("666671143796736021").send(rangEmbed);
+     bot.channels.cache.get("666671143796736021").send(rangEmbed);
      message.channel.send("**Ötletedet sikeresen továbítottuk a staffoknak! FIGYELEM: Amennyiben tudatosan hülyeségeket irkálnál nekünk, az ugyanúgy büntetendő!**")
      
      return;
@@ -1268,19 +1266,19 @@ if (message.content.startsWith(".guess")) {
             return;
           }
          
-          let rangEmbed = new Discord.RichEmbed ()
+          let rangEmbed = new Discord.MessageEmbed()
           .setTitle ("**Új ötlet érkezett!**")
-          .addBlankField()
+          .addField('\u200b', '\u200b')
           .setColor("RANDOM")
           .addField ("Ötletadó:", `${message.author}`)
-          .addBlankField() 
+          .addField('\u200b', '\u200b')
           .addField("Ötlete:", `${message.content}`)
-          .addBlankField()
+          .addField('\u200b', '\u200b')
           .setFooter (`${bot.user.tag}`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
           .setTimestamp();
           
 
-          bot.channels.get("668206606961344516").send(rangEmbed);
+          bot.channels.cache.get("668206606961344516").send(rangEmbed);
         
           message.channel.send("**Ötletedet sikeresen továbítottuk a staffoknak! FIGYELEM: Amennyiben tudatosan hülyeségeket irkálnál nekünk, az ugyanúgy büntetendő!**")
           
