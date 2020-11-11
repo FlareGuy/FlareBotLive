@@ -433,10 +433,10 @@ if (message.content.toLowerCase().includes("discord.gg/")) {
     let kickEmbed = new Discord.MessageEmbed()
     .setTitle ("Automatikus KICK történt, mert én úgy döntöttem")
      .setColor("RANDOM")
-     .addBlankField()
+     .addField('\u200b', '\u200b')
      .addField("Kickelt személy", `${message.member.displayName}`)
      .addField("Oka:", "Discord szerver hirdetése")
-     .addBlankField()
+     .addField('\u200b', '\u200b')
      .setFooter(bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
      .setTimestamp();
       
