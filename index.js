@@ -322,7 +322,7 @@ if (message.author.id === "342630541079609355") {
       
                      bot.users.cache.get(args[1]).send(`<a:infinitygift:525965061789974528> ${uzenet.join(" ")}`);
 
-                  message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.get(args[1]).username}** számára.`);
+                  message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.cache.get(args[1]).username}** számára.`);
 
                     return;  
 
@@ -330,7 +330,7 @@ if (message.author.id === "342630541079609355") {
 
                            bot.users.cache.get(args[1]).send(`${uzenet.join(" ")}`);
                 
-                              message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.get(args[1]).username}** számára.`);
+                              message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.cache.get(args[1]).username}** számára.`);
    
                  return;
               }
