@@ -44,18 +44,22 @@ bot.on('ready', () => {
 
   try {
 
-  console.log(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.cache.map(guilds => `${guilds}`).join(", ")} `);
-  
-  bot.users.cache.get("342630541079609355").send(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.cache.map(guilds => `${guilds}`).join(", ")} `);
+    console.log(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.cache.map(guilds => `${guilds}`).join(", ")} `);
+    
+    bot.users.cache.get("342630541079609355").send(`Bejelentkezve mint ${bot.user.tag}! \n Csatlakozott szerverek: ${bot.guilds.cache.map(guilds => `${guilds}`).join(", ")} `);
 
-  setInterval (function() {
-   
-    let status = statuses [Math.floor(Math.random()* statuses.length)];
-    bot.user.setActivity ( status, {type: "WATCHING"});
-  }, 10000)
+    setInterval (function() {
+    
+      let status = statuses [Math.floor(Math.random()* statuses.length)];
+      bot.user.setActivity ( status, {type: "WATCHING"});
+    }, 10000)
  
+    bot.api.applications(bot.user.id).guilds("417247359551012871").commands.post({data: {
+      name: 'SOON',
+      description: 'Nincs itt semmi látnivaló!'
+  }});
+
   
- 
   
   }
 
@@ -1328,8 +1332,19 @@ if (message.content.startsWith(".guess")) {
 
  }
 
-}
-);
+});
+
+bot.ws.on("INTERACTION_CREATE", async interaction => {
+
+  bot.api.interactions(interaction.id, interaction.token).callback.post({data: {
+      type: 4,
+      data: {
+        content: '**Work In Progress.**'
+        }
+      }
+    })
+
+})
 
 
 
