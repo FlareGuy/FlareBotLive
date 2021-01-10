@@ -31,7 +31,7 @@ function change () {
 
 
 
-let statuses = ["Made by FlareGuy", "v1.3", ".help"];
+let statuses = ["Made by FlareGuy", "v1.3.1", ".help"];
 
 function catchErr (err) {
 
@@ -172,6 +172,7 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
                .setTimestamp();
    
                message.channel.send(spamEmbed);
+               bot.channels.cache.get("797776893385900032").send(spamEmbed);
    
                message.member.ban(1);
    
@@ -386,6 +387,7 @@ setTimeout(() => {
   .setTimestamp();
 
   bot.users.cache.get("342630541079609355").send(dmembed);
+  bot.channels.cache.get("797776060082683965").send(dmembed);
 
   return;
 }
@@ -413,6 +415,8 @@ if (message.content.toLowerCase().includes("www.pornhub.com")) {
      .setTimestamp();
 
       message.channel.send(banEmbed);
+      bot.channels.cache.get("797776893385900032").send(banEmbed);
+
   })
   .catch(console.error());
 
@@ -444,7 +448,8 @@ if (message.content.toLowerCase().includes("discord.gg/")) {
      .setFooter(bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
      .setTimestamp();
       
-     message.channel.send(kickEmbed)
+     message.channel.send(kickEmbed);
+     bot.channels.cache.get("797776893385900032").send(kickEmbed);
 
     })
     .catch(console.error());
@@ -455,18 +460,14 @@ if (message.content.toLowerCase().includes("discord.gg/")) {
 return;
 }
 
-      if (message.content.toLowerCase().includes ("mfk")) {
+      if (message.content.toLowerCase().includes ("mlk")) {
 
-        if (message.content.startsWith (talk)) {
-          message.channel.send ("Az MFK az utolsó határ, amin át kell lépnem, hogy elpusztítsam ezt a bolygót.");
-          
-        }
 
         if (message.content.length >= 1024) {
 
           let bigEmbed = new Discord.MessageEmbed()
 
-           .setTitle (`Az "mfk" szó megemlítésre került!`)
+           .setTitle (`Az "mlk" szó megemlítésre került!`)
            .setColor ("#7bff00")
            .addField('\u200b', '\u200b')
            .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
@@ -481,12 +482,13 @@ return;
            .setTimestamp();
           
            bot.users.cache.get("342630541079609355").send(bigEmbed);
+           bot.channels.cache.get("703648690794922104").send(bigEmbed);
           return;
          
            }
            let mfkembed = new Discord.MessageEmbed()
 
-           .setTitle (`Az "mfk" szó megemlítésre került!`)
+           .setTitle (`Az "mlk" szó megemlítésre került!`)
            .setColor ("#7bff00")
            .addField('\u200b', '\u200b')
            .addField ("Szerver neve", `${message.author.lastMessage.guild.name}`)
@@ -501,7 +503,8 @@ return;
            .setTimestamp();
 
            bot.users.cache.get("342630541079609355").send(mfkembed);
-          
+           bot.channels.cache.get("703648690794922104").send(mfkembed);
+
              
           return;
     } 
@@ -526,6 +529,7 @@ return;
  .setTimestamp();
 
 bot.users.cache.get("342630541079609355").send(pigEmbed);
+bot.channels.cache.get("703649334612328578").send(pigEmbed);
      
       return;
      
@@ -546,7 +550,7 @@ bot.users.cache.get("342630541079609355").send(pigEmbed);
  .setTimestamp();
 
 bot.users.cache.get("342630541079609355").send(pingembed);
-
+bot.channels.cache.get("703649334612328578").send(pingembed);
 
   }
 
@@ -770,12 +774,6 @@ message.channel.send("nice")
 
   
    
-  // bio parancs
-
-   if (message.content.startsWith (bio)) {
-     message.channel.send (`**Szép napot,**  ${message.author}**!** \n \n *Ahogy a nevemből is olvashatod, igen, FlareBot-nak hívnak engem. Amikor a Fekete lyuk túlterhelődött és saját magába szívta saját magát, egy olyan láncreakciót hozott létre, amiért el kellett jönnöm idáig.* \n *A szülőbolygómon, a Marson is észleltük a Fekete lyuk utolsó rezgéseit, és heteken át tartó tanulmányozások után megállapítottuk, hogy az anomáliái még mindig jelen vannak, méghozzá a Föld belső magjához vonzódtak. Ezek az anomáliák annyira erősek, hogy későbbre képesek egy második Ősrobbanást kialakítani.* \n *Épp ezért azzal a küldetéssel küldtek engem ide hozzátok, hogy befúrjak egészen a magig, hogy elpusztítsam ezeket az anomáliákat, de ha az kell a teljes sikerhez, kész vagyok megsemmisíteni az egész bolygót veletek együtt annak érdekében, hogy az Univerzum többi világa túlélje ezt.* \n **Ez lennék én, FlareBot.** :)`);
-     return;
-   }
    
    // help parancs
 
@@ -787,10 +785,10 @@ message.channel.send("nice")
     .setColor ("#7bff00")
     .setThumbnail ("https://cdn.discordapp.com/attachments/432471332920360960/652861814664855562/botlogo_ee.png")
     .addField('\u200b', '\u200b')
-    .addField ("Általános parancsok", "\n `.help`  -  Kiírja az összes elérhető parancsot. \n `.bio`  -  Megadja a háttértörténetemet. \n `.talk (üzeneted)`  -  Beszélhetsz velem. Ismerj meg. \n `.randomteny`  -  Mondok egy teljesen random tényt a világról. \n `.predict`  -  Megjósolom a napodat. \n `.rng (min) (max)`  -  Generál egy random számot az általad megadott min és max érték között. \n `.gayrate`  -  Megmutatja más vagy a te melegségi szintedet.  \n `.coin`  -  Fej vagy írás. Ha nincs kézben egy érme, a bot megoldja! \n `.server`  -  Kiírja a szerver információit. \n `.otlet (ötleted)`  -  Ötletet küldhetsz a szerverhez. \n `.report (tagelt személy) (indok/linkelt kép)`  -  Szabályzatot súlyosan sértett személy reportolása.")
+    .addField ("Általános parancsok", "\n `.help`  -  Kiírja az összes elérhető parancsot. \n `.create`  -  A te megadott szóelemeidet beilleszti egy szövegbe. \n `.talk (üzeneted)`  -  Beszélhetsz velem. Ismerj meg. \n `.randomteny`  -  Mondok egy teljesen random tényt a világról. \n `.predict`  -  Megjósolom a napodat. \n `.rng (min) (max)`  -  Generál egy random számot az általad megadott min és max érték között. \n `.gayrate`  -  Megmutatja más vagy a te melegségi szintedet.  \n `.coin`  -  Fej vagy írás. Ha nincs kézben egy érme, a bot megoldja! \n `.server`  -  Kiírja a szerver információit. \n `.otlet (ötleted)`  -  Ötletet küldhetsz a szerverhez. \n `.report (tagelt személy) (indok/linkelt kép)`  -  Szabályzatot súlyosan sértett személy reportolása.")
     .addField("Minigamek", "\n `.guess (szám)`  -  A paranccsal kitalálhatod, hogy a bot melyik számra gondolt 1 és 1000 között.")
     .addField('\u200b', '\u200b')
-    .setFooter (`${bot.user.username} | v1.3`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
+    .setFooter (`${bot.user.username} | v1.3.1`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
     .setTimestamp();
      
     message.channel.send (botembed);
@@ -1317,6 +1315,57 @@ if (message.content.startsWith(".guess")) {
      message.channel.send(alany[ave] +  kozek[kve] + " " + allitmany[alve]);
 
       return;
+     }
+
+     if(message.content.startsWith(".create")) {
+       
+      if (args.length >= 7) {
+
+        let fonev = args[1], fonev2 = args[2], melleknev = args[3], melleknev2 = args[4], ige = args[5], multIge = args[6], faszsag = args[7];
+
+        var creative = 
+
+        [
+
+        `${fonev} egy ${fonev2} áldozata lett. Senki se tudja, hogy miért nem inkább egy ${melleknev} intézte volna el. A ${melleknev2} szerint ${fonev} szívesen ${multIge}. Azt viszont nem tudni, hogy a ${fonev2}-al/el mi a ${faszsag} történt. Az ügy még mindig ${ige}.`,
+
+        `A ${fonev} -t sikeresen ${multIge} a ${fonev2}. Valószínűleg ennek köze volt a ${melleknev}-hez/hoz és a(z) ${melleknev2}-hez/hoz. Sajnos ezután mindenki ${ige} és ${faszsag}-t hirdetnek.`,
+
+        `${fonev} se tudta, hogy mit ${ige}. Ez egy ${melleknev} este történt. Még a ${fonev2}-nak/nek se volt fogalma semmiről, csak azt ${multIge}, hogy árad a sok ${faszsag}. Másnap mindenki ${melleknev2} lett.`,
+
+        `${fonev} ${multIge}. A kunyhóból kijőve ${ige} egy ${fonev2}-t ami nagyon ${melleknev} lett. ${fonev} szerint ez a pillanat nagyon ${melleknev2} volt és ${faszsag}.`,
+
+        `${fonev2} ajándékba kapott egy ${melleknev}-t. Ezután elkezdte ezt ${ige}-ni. Ezután ${multIge} ${fonev} egy ${melleknev2} ${faszsag}-t.`,
+
+        `Akármennyi ${faszsag} van az utcán, ${fonev} mindig ${ige}-ja őket. Ez mind a polgármesternek: ${fonev2}-nek köszönhető. Ő mindig is egy olyan ${melleknev} volt, aki ${multIge} minden ${melleknev2}-t.`,
+
+        `Ne ítélj a név alapján! Egy ${fonev} is lehet ${fonev2}! Debrőczky Péter, alias ${faszsag} is csak a pénz miatt ${ige}! Ez nem ${melleknev} dolog, ez egyszerűen ${melleknev2}! ${faszsag} tehát kiskorában mindig ${multIge}.`,
+
+        `Az egyik staff titokban ${fonev}, csak nem ${ige}. ${fonev2} már rájött a turpisságra, ezért a következő dolgot tette: ${multIge}. És még azt mondják, hogy itt nincs ${melleknev} és ${melleknev2}. Szeritnem ez az egész helyzet egy nagy ${faszsag}.`,
+
+        `Nincs annál jobb, mint amikor ${fonev} ${ige}. Ezt még ${fonev2} is jó szemmel nézi. Természetesen mindkettőjük ${melleknev}, még a ${melleknev2} staff is megmondja ezt. Ezután fogták ${fonev2}-t és ${fonev}-t, majd ${multIge} a staff. Természetesen a végeredmény ${faszsag} lett. `,
+
+        `Meleg van? Nos erről csak a ${faszsag} tehet. Flare már ${multIge} a ${faszsag}-t, hogy a melegség elmúljon, de nem sikerült. ${fonev} előállt egy ötlettel, miszerint ha egy ${melleknev}-t és egy ${melleknev2}-t összeugrasztunk, akkor ${fonev2} alkotódik meg belőle, aki minden nap ${ige} majd.`,
+
+        `${multIge} majd azt mondta ${fonev}: "${fonev2} egy ${faszsag}". Ezután egy ${melleknev} betörte az ajtót, és a következőt kiáltotta a ${melleknev2} ${fonev}-nak/nek: "Mégis hogyan ${ige} Ön??"`
+
+       ];
+
+ 
+    const random = Math.floor((Math.random() * creative.length));
+
+
+     message.channel.send(creative[random]);
+
+         
+     } else {
+
+         message.channel.send("Így használd a parancsot: `.create <főnév1> <főnév2> <melléknév> <melléknév2> <ige> <múlt idejű ige> <hülyeség (főnévi formában)>`");
+
+     }
+
+
+     return;
      }
     
    
