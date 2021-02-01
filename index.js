@@ -17,6 +17,8 @@ const masodikw = new Set ();
 const harmadikw = new Set ();
 const negyedikw = new Set ();
 
+const nitroQue = new Set ();
+
 let elso = [];
 let masodik = [" aaaaa "];
 let harmadik = [" bbbbb "];
@@ -31,7 +33,8 @@ function change () {
 
 
 
-let statuses = ["Made by FlareGuy", "v1.3.1", ".help"];
+let statuses = ["Made by FlareGuy", "v1.4.0", ".help"];
+let karakterek = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 function catchErr (err) {
 
@@ -78,7 +81,6 @@ bot.on('ready', () => {
 
 //Commandok definiálása
 
-let bio = prefix + "bio";
 let help = prefix + "help";
 let talk = prefix + "talk";
 let report = prefix + "report";
@@ -165,7 +167,7 @@ const szo = mellekNev[mNRandom] + mellekTulaj[mTRandom] + " " + fonevTulaj[fTRan
                .setTitle ("Automatikus ban került végrehajtásra!")
                .setColor("RANDOM")
                .addField('\u200b', '\u200b')
-               .addField ("Üzenet küldője", `${message.member.displayName}`)
+               .addField ("Üzenet küldője", `${message.member.user.username}`)
                .addField('\u200b', '\u200b')
                .addField ("Oka", `Többszöri figyelmeztetés utáni spammelés.`)
                .setFooter (bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
@@ -296,23 +298,9 @@ if (message.author.id === "342630541079609355") {
    
   if (message.content.startsWith("!pub")) {
 
-     
-         if (args[2] === "001") {
-        
-               uzenet.shift();
-
-      
-                     bot.channels.cache.get(args[1]).send(`<a:infinitygift:525965061789974528> ${uzenet.join(" ")}`);
-
-                 return;   
-
-                     } else {
-  
-                        bot.channels.cache.get(args[1]).send(`${uzenet.join(" ")}`);
- 
-
-                      return;
-                    }
+        return  bot.channels.cache.get(args[1]).send(`${uzenet.join(" ")}`);
+             
+                    
            }
 
    
@@ -320,25 +308,12 @@ if (message.author.id === "342630541079609355") {
 
   if (message.content.startsWith("!dm")) {
 
-      
-          if (args[2] === "001") {
-        
-               uzenet.shift();
-      
-                     bot.users.cache.get(args[1]).send(`<a:infinitygift:525965061789974528> ${uzenet.join(" ")}`);
-
-                  message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.cache.get(args[1]).username}** számára.`);
-
-                    return;  
-
-                        } else {
-
-                           bot.users.cache.get(args[1]).send(`${uzenet.join(" ")}`);
+                bot.users.cache.get(args[1]).send(`${uzenet.join(" ")}`);
                 
-                              message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.cache.get(args[1]).username}** számára.`);
+              return message.channel.send(`Az üzenet sikeresen kiküldve **${bot.users.cache.get(args[1]).username}** számára.`);
    
-                 return;
-              }
+           
+              
        } 
 
 } 
@@ -408,7 +383,7 @@ if (message.content.toLowerCase().includes("www.pornhub.com")) {
      .setTitle ("Automatikus BAN történt, mert én úgy döntöttem")
      .setColor("RANDOM")
      .addField('\u200b', '\u200b')
-     .addField("Bannolt személy", `${message.member.displayName}`)
+     .addField("Bannolt személy", `${message.member.user.username}`)
      .addField("Oka:", "Pornográf tartalom megosztása.")
      .addField('\u200b', '\u200b')
      .setFooter(bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
@@ -442,7 +417,7 @@ if (message.content.toLowerCase().includes("discord.gg/")) {
     .setTitle ("Automatikus KICK történt, mert én úgy döntöttem")
      .setColor("RANDOM")
      .addField('\u200b', '\u200b')
-     .addField("Kickelt személy", `${message.member.displayName}`)
+     .addField("Kickelt személy", `${message.member.user.username}`)
      .addField("Oka:", "Discord szerver hirdetése")
      .addField('\u200b', '\u200b')
      .setFooter(bot.user.username, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
@@ -785,10 +760,10 @@ message.channel.send("nice")
     .setColor ("#7bff00")
     .setThumbnail ("https://cdn.discordapp.com/attachments/432471332920360960/652861814664855562/botlogo_ee.png")
     .addField('\u200b', '\u200b')
-    .addField ("Általános parancsok", "\n `.help`  -  Kiírja az összes elérhető parancsot. \n `.create`  -  A te megadott szóelemeidet beilleszti egy szövegbe. \n `.talk (üzeneted)`  -  Beszélhetsz velem. Ismerj meg. \n `.randomteny`  -  Mondok egy teljesen random tényt a világról. \n `.predict`  -  Megjósolom a napodat. \n `.rng (min) (max)`  -  Generál egy random számot az általad megadott min és max érték között. \n `.gayrate`  -  Megmutatja más vagy a te melegségi szintedet.  \n `.coin`  -  Fej vagy írás. Ha nincs kézben egy érme, a bot megoldja! \n `.server`  -  Kiírja a szerver információit. \n `.otlet (ötleted)`  -  Ötletet küldhetsz a szerverhez. \n `.report (tagelt személy) (indok/linkelt kép)`  -  Szabályzatot súlyosan sértett személy reportolása.")
+    .addField ("Általános parancsok", "\n `.help`  -  Kiírja az összes elérhető parancsot. \n `.create`  -  A te megadott szóelemeidet beilleszti egy szövegbe. \n `.talk (üzeneted)`  -  Beszélhetsz velem. Ismerj meg. \n `.randomteny`  -  Mondok egy teljesen random tényt a világról. \n `.predict`  -  Megjósolom a napodat. \n `.rng (min) (max)`  -  Generál egy random számot az általad megadott min és max érték között. \n `.gayrate`  -  Megmutatja más vagy a te melegségi szintedet.  \n `.coin`  -  Fej vagy írás. Ha nincs kézben egy érme, a bot megoldja! \n `.nitro`  -  A bot küld egy Nitro linket, és ha szerencséd van, akkor begyűjtheted! (1 perces cooldown / személy) \n `.server`  -  Kiírja a szerver információit. \n `.otlet (ötleted)`  -  Ötletet küldhetsz a szerverhez. \n `.report (tagelt személy) (indok/linkelt kép)`  -  Szabályzatot súlyosan sértett személy reportolása.")
     .addField("Minigamek", "\n `.guess (szám)`  -  A paranccsal kitalálhatod, hogy a bot melyik számra gondolt 1 és 1000 között.")
     .addField('\u200b', '\u200b')
-    .setFooter (`${bot.user.username} | v1.3.1`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
+    .setFooter (`${bot.user.username} | v1.4.0`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
     .setTimestamp();
      
     message.channel.send (botembed);
@@ -947,12 +922,27 @@ message.channel.send("nice")
    } 
 
 
-   if (message.content.startsWith(".drop")) {
+   if (message.content.startsWith(".nitro")) {
 
-    message.channel.send(elso.join(", "));
-    setTimeout(() => {
-        message.channel.send(masodik.join(", "));
-    }, 500);
+    if(nitroQue.has(message.member.id)) {
+        message.channel.send("**Várd meg, amíg letelik az 1 perces cooldownod!**");
+    }
+    else {
+      let nitroURL = "https://discord.gift/";
+
+      for(let j = 0; j < 16; j++) {
+          let randomChar = Math.floor(Math.random() * karakterek.length);
+          nitroURL += karakterek[randomChar];
+    }
+      nitroQue.add(message.member.id);
+      message.channel.send(nitroURL);
+
+    
+      setTimeout(() => {
+        nitroQue.delete(message.member.id);
+      }, 60000);
+
+    }
 }
 
 
