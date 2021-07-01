@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "discord.js": "12.2.0",
+    "discord-together": "1.1.14",
     "request": "2.81.0"
   }
 }
