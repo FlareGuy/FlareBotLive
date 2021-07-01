@@ -448,7 +448,7 @@ return;
             .setFooter (bot.user.username, "https://bit.ly/3dVHciz")
             .setTimestamp();
 
-            await message.channel.send(embed);
+            message.channel.send(embed);
         }
 
         if(message.content.startsWith("!event")) {
