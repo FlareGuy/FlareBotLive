@@ -4,10 +4,12 @@ const bot = new Discord.Client( {
   fetchAllMembers: true
 
 });
+const { DiscordTogether } = require('discord-together');
 
 const prefix = ".";
 const dmRecently = new Set ();
 const predict = new Set ();
+bot.discordTogether = new DiscordTogether(bot);
 
 bot.login(process.env.token);
 
@@ -33,7 +35,7 @@ function change () {
 
 
 
-let statuses = ["Made by FlareGuy", "v1.4.0", ".help"];
+let statuses = ["Made by FlareGuy", "v1.4.1", ".help"];
 let karakterek = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
 function catchErr (err) {
@@ -434,6 +436,39 @@ if (message.content.toLowerCase().includes("discord.gg/")) {
   }
 return;
 }
+    
+     if(args[0] == "!opciók") {
+            let embed = new Discord.MessageEmbed()
+            .setTitle("__Minigame eventek lehívása__")
+            .setColor("#6fe5f7")
+            .addField('\u200b', '\u200b')
+            .addField("`!event` command utáni opciók:", 
+            "\n`youtube` - Egy voice szobában együtt nézhettek videókat vagy streameket.\n`poker` - Pókerezhettek egymással (2-7 fő per asztal) \n`chess` - Értelemszerűen egy kényelmes kis sakk meccs ;) \n`betrayal` - Among Us típusú kapd el a gyilkost vagy ő kap el téged. \n`fishing` - Chilles horgászás a haverokkal.")
+            .setThumbnail(bot.user.avatarURL())
+            .setFooter (bot.user.username, "https://bit.ly/3dVHciz")
+            .setTimestamp();
+
+            await message.channel.send(embed);
+        }
+
+        if(message.content.startsWith("!event")) {
+
+            if(message.member.voice.channel) {
+
+            if(!args[1]) {
+                bot.discordTogether.createTogetherCode(message.member.voice.channelID, "poker").then(async invite => {
+                    return message.channel.send(`${invite.code}`);
+                });
+            } else if(args[1]) {
+                bot.discordTogether.createTogetherCode(message.member.voice.channelID, args[1]).then(async invite => {
+                    return message.channel.send(`${invite.code}`);
+                });
+            }
+
+        } else {
+            return message.channel.send("*Lépj be egy voice szobába előbb!*");
+        }
+    }
 
       if (message.content.toLowerCase().includes ("mlk")) {
 
@@ -763,7 +798,7 @@ message.channel.send("nice")
     .addField ("Általános parancsok", "\n `.help`  -  Kiírja az összes elérhető parancsot. \n `.create`  -  A te megadott szóelemeidet beilleszti egy szövegbe. \n `.talk (üzeneted)`  -  Beszélhetsz velem. Ismerj meg. \n `.randomteny`  -  Mondok egy teljesen random tényt a világról. \n `.predict`  -  Megjósolom a napodat. \n `.rng (min) (max)`  -  Generál egy random számot az általad megadott min és max érték között. \n `.gayrate`  -  Megmutatja más vagy a te melegségi szintedet.  \n `.coin`  -  Fej vagy írás. Ha nincs kézben egy érme, a bot megoldja! \n `.nitro`  -  A bot küld egy Nitro linket, és ha szerencséd van, akkor begyűjtheted! (30mp cooldown / személy) \n `.server`  -  Kiírja a szerver információit. \n `.otlet (ötleted)`  -  Ötletet küldhetsz a szerverhez. \n `.report (tagelt személy) (indok/linkelt kép)`  -  Szabályzatot súlyosan sértett személy reportolása.")
     .addField("Minigamek", "\n `.guess (szám)`  -  A paranccsal kitalálhatod, hogy a bot melyik számra gondolt 1 és 1000 között.")
     .addField('\u200b', '\u200b')
-    .setFooter (`${bot.user.username} | v1.4.0`, "https://cdn.discordapp.com/attachments/649996051159318551/650397196293767189/botlogo_publ2.png")
+    .setFooter (`${bot.user.username} | v1.4.1`, bot.user.avatarURL())
     .setTimestamp();
      
     message.channel.send (botembed);
